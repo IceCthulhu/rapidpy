@@ -5,8 +5,7 @@ pipeline {
         stage('Preparar entorno') {
             steps {
                 echo "Creando entorno virtual..."
-                bat 'python -m venv venv'
-                bat 'venv\\Scripts\\activate && pip install --upgrade pip'
+                bat '"C:\\Users\\icebe\\AppData\\Local\\Programs\\Python\\Python312\\python.exe" -m venv venv'
                 bat 'venv\\Scripts\\activate && pip install -r requirements.txt'
             }
         }
@@ -21,17 +20,13 @@ pipeline {
         stage('Ejecutar tests') {
             steps {
                 echo "Ejecutando pruebas..."
-                bat 'venv\\Scripts\\activate && pytest tests\\ --maxfail=1 --disable-warnings -q'
+                bat 'venv\\Scripts\\activate && pytest tests\\'
             }
         }
     }
 
     post {
-        success {
-            echo "✅ Pipeline completado con éxito"
-        }
-        failure {
-            echo "❌ Error en alguna etapa del pipeline"
-        }
+        success { echo "✅ Pipeline completado con éxito" }
+        failure { echo "❌ Error en alguna etapa del pipeline" }
     }
 }
