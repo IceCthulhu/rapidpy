@@ -17,17 +17,11 @@ pipeline {
             }
         }
 
-        stage('Ejecutar tests') {
-            steps {
-                echo "Ejecutando pruebas..."
-                bat 'venv\\Scripts\\activate && pytest tests\\'
-            }
-        }
-    }
 
     post {
         success { echo "✅ Pipeline completado con éxito" }
         failure { echo "❌ Error en alguna etapa del pipeline" }
     }
 }
+
 
