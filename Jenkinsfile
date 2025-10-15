@@ -16,12 +16,13 @@ pipeline {
                 bat 'venv\\Scripts\\activate && python src\\hello.py'
             }
         }
-
+    }
 
     post {
         success { echo "✅ Pipeline completado con éxito" }
         failure { echo "❌ Error en alguna etapa del pipeline" }
     }
 }
+
 
 
